@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<style>
+    form {
+        transform: translate(50%, 0%);
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+</style>
+<form style="margin:40px;" class="w-50" method="POST">
+    {% csrf_token %}
+    
+    {% for field in form %}
+        <div class="form-group">
+            <label for="">{{field.label}}: </label>
+            {{field}}
+        </div> 
+    {% endfor %}
+        
+
+    <button class="btn btn-success">Submit</button>
+
+</form>
+{% endblock body %}
+    

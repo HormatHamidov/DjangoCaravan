@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<style>
+    .color-box {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+</style>
+
+<form action="{% url 'colorapp:meyve_view' %}" method="GET">
+    <label for="name-input">Name:</label>
+    <input type="text" id="name-input" name="name">
+
+    <label for="color-input">Color:</label>
+    <select id="color-input" name="color">
+        <option value="">All Colors</option>
+        
+        {% for color in colors %}
+            <option value="{{ color.name }}">{{ color.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
+{% for meyve in meyveler %}
+    <div>
+        <span>{{ meyve.name }}</span>
+        <div class="color-box" style="background-color: {{ meyve.color.color }};"></div>
+    </div>
+{% empty %}
+    <p>No filtered results found.</p>
+{% endfor %}
+
+{% endblock body %}

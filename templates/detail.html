@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<p>Author: {{article.author}}</p>
+<p>Title: {{article.title}}</p>
+<p>Content: {{article.content}}</p>
+<a href="{% url 'delete' article.id %}">Delete</a>
+<a href="{% url 'update' article.id %}">Update</a>
+<hr>
+{% endblock body %}
